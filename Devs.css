@@ -1,0 +1,754 @@
+*{
+	margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.header{
+    width: 100%;
+    height: 90vh;
+    background:linear-gradient(rgba(1,6,27,0.4), rgba(1,6,27,0.4)), url('lagos.jpeg') center/cover no-repeat;
+    
+}
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 10px;
+    
+}
+.navbar{
+    display: flex;
+    padding: 22px 0;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+    position: fixed;
+}
+.navbar .logo{
+    display: flex;
+    text-decoration: none;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+.navbar .menu-btn{
+    display: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+.navbar .logo img{
+    width: 50px;
+}
+.navbar .logo h3{
+    color: #deb841;
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.navbar .links{
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    list-style: none;
+    margin-top: 20px;
+}
+.navbar .links .close-btn {
+    display: none;
+    color: #0000;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1.5rem;
+}
+.navbar .links a{
+    color: #deb841;
+    text-decoration: none;
+    font-size: 1.6rem;
+    
+}
+.navbar .links a:hover{
+    color: #deb841; 
+    text-decoration: underline;
+    transition: 0.5s ease-in-out;
+}
+.navbar .login-btn {
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    padding: 10px 10px;
+    border-radius: 20cm;
+    cursor: pointer;
+    color: #ffff;
+    width: 120px;
+    background-color: #0047ab;
+}
+.navbar .login-btn:hover {
+    color: #006aff;
+    background-color: #ffff;
+    border: 4px solid #006aff;
+}
+.blur-bg-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(5px); 
+    transition: 0.1s ease;
+}
+.show-popup .blur-bg-overlay{
+    opacity: 1;
+    pointer-events: auto;
+}
+.form-popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 720px;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background: #deb841;
+    border: 2px solid #deb841;
+    transform: translate(-50%,-100%)
+}
+.show-popup .form-popup{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%);
+    transition: transform 0.3s ease, opacity: 0.1s;
+}
+.form-popup .close-btn img {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #878484;
+    cursor: pointer;
+    height: 30px;
+}
+.form-popup .form-box{
+    display: flex;
+}
+.form-box .form-details {
+    max-width: 330px;
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+    text-align: center;
+    flex-direction: column;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    
+}
+.login .form-details {
+    background: url('pexels-media-2425419-1702572942379.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.signup .form-details {
+    background: url('pexels-media-5834915-1702573161852.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.form-box h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.form-box .form-content{
+    width: 100%;
+    padding: 35px;
+}
+form .input-field{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+form .input-field input{
+width: 100%;
+height: 100%;
+padding: 0 15px;
+outline: none;
+font-size: 0.95rem;
+border-radius: 3px;
+border: 1px solid #0047ab;
+}
+.input-field input:focus{
+    border-color: #006aff;
+}
+.input-field input:is(:focus, :valid){
+    padding: 16px 15px 0;
+}
+form .input-field label{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    color: #0047ab;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.3s ease;
+}
+.input-field input:is(:focus, :valid) ~label{
+    color: #0047ab;
+    font-size: 0.75rem;
+    transform: translateY(-120%);
+}
+.form-box a{
+    text-decoration: none;
+    color: #0047ab;
+}
+.form-box a:hover{
+    text-decoration: underline;
+}
+.form-box :where(.forgot-pass, .policy-text) {
+    display: inline-flex;
+    margin-top: 14px;
+    font-size: 0.95rem;
+}
+form button {
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 0;
+    border-radius: 3px;
+    margin: 25px 0;
+    color: #ffff;
+    cursor: pointer;
+    background: #006aff;
+    transition: 0.2s ease;
+}
+form button:hover{
+    background: #205aac;
+}
+.form-box .bottom-link{
+    text-align: center;
+}
+.form-popup .signup,
+.form-popup.show-signup .login{
+    display: none;
+}
+.form-popup.show-signup .signup{
+    display: flex;
+}
+.signup .policy-text{
+    display: flex;
+    align-items: center;
+}
+.signup .policy-text input{
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
+.part1{
+    margin-top:30px;
+    text-align: left;
+    margin-left: 170px;
+}
+.part1 h3{
+    margin-top: 30px;
+color: ghostwhite;
+font-size: 4.5rem;
+}
+.part1 p{
+    color: ghostwhite;
+    font-size: 2rem;
+    margin-top: 15px;
+}
+.join{
+    color: ghostwhite;
+    background-color: #0047ab;
+    border: 2px solid #0047ab;
+    font-size: 2rem;
+    height: 60px;
+    width: 180px;
+    border-radius: 20cm;
+    margin-top: 35px;
+    cursor: pointer;
+    
+}
+.join:hover{
+    background-color: #fff;
+    color: #006aff;
+    border: 4px solid #006aff;
+}
+.part2{
+    margin-top: 25px;
+    background-color: #d09c01;
+    height: 25vh;
+    margin-left: 170px;
+    max-width: 1200px;
+    align-items: center;
+    box-shadow: 0 0 1rem #111;
+    transition: 0.5s ease;
+}
+.part2:hover{
+    box-shadow: none;
+    cursor: pointer;
+}
+.date{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 30px;
+    
+}
+.pick label{ 
+    display: block;
+    color: #0047ab;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.pick input{
+color: #fff;
+text-align: center;
+width: 199px;
+    font-size: 1.6rem;
+    height: 50px;
+    border-radius: 20cm;
+border: 1px solid #0047ab;
+background-color: #0047ab;
+}
+.pick select{
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #0047ab;
+    background-color: #0047ab;
+    width: 170px;
+    font-size: 1.6rem;
+    height: 50px;
+    border-radius: 20cm;
+    }
+.book{
+    margin-top: 40px;
+    border: 1px solid #0047ab;
+    background-color: #0047ab;
+    color: #fff;
+    font-size: 1.7rem;
+    width: 150px;
+    height: 70px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 20cm;
+}
+.destination{
+    height: 110vh;
+    text-align: center;
+margin-top: 90px;    
+}
+.choose h4{
+    padding-top:70px;
+    color: #0047ab;
+    font-size: 2rem;
+}
+.choose h3{
+    color: #0047ab;
+    font-size: 3rem;
+}
+.long{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+.long1{
+    height: 4px;
+    width: 200px;
+    background-color: gray;
+    
+    
+}
+.long2{
+    height: 4px;
+    width: 200px;
+    background-color: gray;
+}
+.long3{
+    height: 4px;
+    width: 200px;
+    background-color: blue;
+}
+.place1{
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;    
+    margin-top: 30px;
+    margin-bottom: 1rem;
+}
+.place1 button{
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 140px;
+    width: 150px;
+    border: 2px solid #0047ab;
+    border-radius: 20cm;
+    background-color: #0047ab;
+}
+.place2{
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+.place2 button{
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 140px;
+    width: 150px;
+    border: 2px solid #0047ab;
+    border-radius: 20cm;
+    background-color: #0047ab;
+}
+.ogun{
+    background: url(ogun.jpeg);
+    height: 200px;
+    width:300px;
+    background-size: contain;
+}
+.oyo{
+    background: url(oyo.jpeg);
+    height: 200px;
+    width: 300px;
+    background-size: contain;
+}
+.calabar{
+    background: url(calabar.jpeg);
+    height: 200px;
+    width: 300px;
+    background-size: contain;
+}
+.lagos{
+    background: url(lagos.jpeg);
+    height: 200px;
+    width: 300px;
+    background-size: contain;
+}
+.anambra{
+    background: url(anambra.jpeg);
+    height: 200px;
+    width: 300px;
+    background-size: contain;
+}
+.abuja{
+    background: url(abuja.webp);
+    height: 200px;
+    width: 300px;
+    background-size: contain;
+}
+.info{
+    background-color: #deb841;
+    height: 84vh;
+   
+}
+.news{
+    font-size: 2.5rem;
+    color: #0047ab;
+    text-align: center;
+    padding-top: 25px;
+    margin-bottom: 20px;
+}
+.latest h3{
+    font-size: 3rem;
+    color: #0047ab;
+    text-align: center;
+    padding-top: 15px;
+    margin-bottom: 10px;
+}
+.about{
+    background-color: #d09C01;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 104vh;
+    padding: 0 60px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.about-content p{
+   font-size: 1.5rem;
+   margin: 2rem; 
+   padding: 0 0 20px 0;
+}
+.about-content h2{
+    text-align: center;
+    line-height: 1.2;
+    color: #fff; 
+    font-size: 3rem; 
+ }
+ .about-content a{
+    text-decoration: none;
+    color: #fff;
+    margin-left: 30px;
+}
+span{
+    color: #0047ab  ;
+}
+.dropdown-menu{
+    display: block;
+}
+.about-img img{
+   border-radius: 65%;
+   height: 300px;
+      margin-top: 50px;
+}
+.about-head{
+   text-align: center;
+   font-size: 4.5rem;
+}
+.long-e{
+    padding-bottom: 30px;
+}
+.news{
+    height: 16s0vh;
+}
+.news h3{
+    padding-top: 32px;
+    text-align: center;
+    color: #0047ab;
+    font-style: sans-serif;
+}
+.my-team{
+    background-color: #d09C01;
+    height: 120vh;
+}
+.my-team h3{
+    padding-top: 32px;
+    text-align: center;
+    color: #0047ab;
+    font-style: sans-serif;
+    font-size: 3.3rem;
+}
+.row .card img{
+    height: 380px;
+} 
+.card-body{
+    text-align: center;
+}
+.icons svg{
+    width: 20px;
+}
+
+.btn1{
+   display: inline-block;
+   padding: 1rem 2.8rem;
+   background: #0047ab;
+   border-radius: 4rem;
+    font-size: 1.6rem;
+    color: #323946;
+    letter-spacing: .1rem;
+    font-weight: 600;
+    box-shadow: 0 0 1rem #111;
+    transition: .5s ease;
+ }
+ .btn1:hover{
+box-shadow: none;
+color: #111;
+} 
+.make-pay h3{
+text-align: center;
+font-size: 2.8rem;
+color: #0047ab;
+padding-top: 20px;
+}
+.payment{
+    height: 100vh;
+    padding-top: 10px;
+}
+.payment p{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    padding-bottom: 90px;
+}
+.payment a{
+    text-decoration: none;
+}
+.col-lg svg{
+    margin: 0 70px;
+    margin-bottom: 20px;
+    color: #0047ab;
+}
+.col-lg{
+    padding-bottom: 50px;
+}
+.col-lg p{
+    font-size: 20px;
+    text-align: justify;
+    padding: 0 5px;
+}
+.col-lg h5{
+    text-align: center;
+}
+.row{
+    align-items: center;
+}
+.footer{
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   padding: 2rem 9%;
+   background: #323946;
+   align-items: center;
+}
+ .footer h2{
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 30px;
+ }
+  .footer .row .col-md{
+    flex-basis: 25%;
+    flex-grow: 1;
+    margin-bottom: 20px;
+  }
+  .footer .col-md a{
+    display: block;
+    text-decoration: none;
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .footer .row{
+    align-items: flex-start;
+    padding: 10px 0;
+  }
+.footer-icontop a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: #0047ab;
+    border-radius: .8rem;
+    transition: .5s ease;
+}
+.col-md p{
+    color: #fff;
+}
+.footer-icontop a i{
+   font-size: 1.4rem;
+
+}
+.footer-icontop a:hover{
+   box-shadow: 0 0 1rem #0047ab;
+}
+.copyright{
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #fff     ;
+}
+.payment img{
+    width: 200px;
+    margin: 30px 40px;
+}
+@media (max-width: 1000px){
+    .navbar :is(.menu-btn, .links .close-btn){
+        display: block;
+    }
+    .navbar{
+        padding: 15px 0;
+    }
+    .navbar .logo img{
+        display: none;
+    }
+    .navbar .logo h2{
+        font-size: 1.4rem;
+    }
+    .navbar .links{
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background: #ffff;
+        padding-top: 60px;
+        display: block;
+        text-align: center;
+        transition: 0.2s ease;
+    }
+    .navbar .links.show-menu{
+        left: 0;
+    }
+    .navbar .links a{
+        color: black;
+        display: inline-flex;
+        margin: 20px 0;
+        font-size: 1.2rem;
+    }
+    .navbar .login-btn{
+        font-size: 0.9 rem;
+        padding: 7px 10px;
+    }
+    .part2{
+        height: 500px;
+        width: 400px;
+        
+    }
+    .date{
+        display:block;
+        justify-content: center;
+        text-align: center;
+        
+    
+    }
+    .destination{
+        margin-top: 460px;
+    }
+    .rows {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+}
+
+@media (max-width: 760px){
+    .form-popup{
+        width: 95%;
+    }
+    .form-box .form-details {
+        display: none;
+    }
+    .form-box .form-content{
+        padding: 30px 20px;
+    }
+
+
+    .navbar .menu-btn{
+        display: block;
+        color: #ffff;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
